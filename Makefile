@@ -3,7 +3,7 @@ SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 OBJ = $(SRC:.s=.o)
 
 NA = nasm
-NAFLAGS = -f macho64 -Werror
+NAFLAGS = -fmacho64 -Werror
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I./
 LIBFLAGS = -L./ -lasm
