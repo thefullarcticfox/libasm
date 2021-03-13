@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
+#include <sys/stat.h>
 
 void	ft_error(void)
 {
@@ -11,7 +12,7 @@ void	ft_error(void)
 	{
 		printf("errno: %d\n", errno);
 		perror("Error");
-		printf("\n", errno);
+		printf("\n");
 		errno = 0;
 	}
 }
