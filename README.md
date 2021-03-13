@@ -13,3 +13,5 @@
 4. Remove all preceding underscores in all function names (so ```_ft_read``` becomes ```ft_read```)
 5. Change ```___error``` to ```__errno_location``` in ```ft_read.s``` and ```ft_write.s```
 6. Linux syscalls return negative errno value on error so you need to change error condition check and errno assignment
+
+> There's also no need to align call stack by pushing certain registers as it was darwin/macOS requirement (you'll probably get crashes if you don't do this on darwin)
