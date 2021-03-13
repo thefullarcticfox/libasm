@@ -2,7 +2,7 @@
 42 libasm project in Intel x86 syntax
 
 ### Running on Linux
-1. Install nasm
+1. Install `nasm`
 2. Run `make` to build or ```make runtest``` to build and run test
 
 ### Porting to Linux
