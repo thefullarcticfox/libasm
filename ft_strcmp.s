@@ -17,19 +17,8 @@ while:
 			jmp			while
 
 return:
+			mov			rdx, 0
 			mov			al, byte[rdi + rcx]
-			cmp			al, byte[rsi + rcx]
-			ja			returng					; diff > 0
-			jb			returnl					; diff < 0
-			ret									; else return 0
-
-returng:
-			mov			al, byte[rdi + rcx]
-			sub			al, byte[rsi + rcx]
-			ret
-
-returnl:
-			mov			al, byte[rdi + rcx]
-			sub			al, byte[rsi + rcx]
-			sub			rax, 256
+			mov			dl, byte[rsi + rcx]
+			sub			rax, rdx
 			ret
