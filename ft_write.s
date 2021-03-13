@@ -1,19 +1,18 @@
-			global		_ft_write
-			extern 		___error
+			global		ft_write
+			extern 		__errno_location
 
 			section		.text
-_ft_write:								; args: rdi, rsi, rdx, rcx, r8, r9
-			push		rbx				; align callstack (must do on mac)
-			mov			rax, 0x02000004	; mac syscall write
+ft_write:											; args: rdi, rsi, rdx, rcx, r8, r9
+			mov			rax, 1						; linux syscall write
 			syscall
-			jc			error			; jump if carry error
-			pop			rbx				; restore rbx
+			cmp			rax, 0
+			jl			error						; jump if less than 0 to error
 			ret
 
 error:
-			mov			rdx, rax		; move returned errno from syscall
-			call		___error		; call error address
-			mov			[rax], rdx		; set errno to error address
-			mov			rax, -1			; return -1
-			pop			rbx				; restore rbx
+			mov			rdx, rax					; move returned errno from syscall
+			call		__errno_location WRT ..plt	; call errno address
+			neg			rdx							; change sign
+			mov			[rax], rdx					; set errno to error address
+			mov			rax, -1						; return -1
 			ret

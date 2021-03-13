@@ -1,7 +1,7 @@
-			global		_ft_strcmp
+			global		ft_strcmp
 
 			section		.text
-_ft_strcmp:
+ft_strcmp:
 			mov			rax, 0					; diff = 0
 			mov			rcx, 0					; i = 0
 
